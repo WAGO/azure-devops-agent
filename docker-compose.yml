@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   agent1:
-    image: dockeragent:latest
+    image: wagoautomation/azure-devops-agent:latest
     build:
       context: ./build-context
     restart: unless-stopped
