@@ -1,0 +1,7 @@
+#!/bin/bash
+docker buildx create --name=builder-$(hostname) --use
+docker buildx inspect --bootstrap
+BUILDER=$(docker ps | grep builder-$(hostname) | cut -f1 -d' ')
+docker cp /etc/ssl/certs/ca-certificates.crt $BUILDER:/usr/local/share/ca-certificates/
+docker exec $BUILDER update-ca-certificates
+docker restart $BUILDER

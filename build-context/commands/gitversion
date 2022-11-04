@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run --rm -v $PWD:$PWD gittools/gitversion:5.6.6 $PWD $@
