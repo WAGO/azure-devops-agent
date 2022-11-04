@@ -8,7 +8,11 @@
     cp .env.template .env
     code .env
     ```
-- Build the docker image:
+- Pull the docker image:
+    ```
+    docker compose pull
+    ```
+- Alternatively you can build the docker image with:
     ```
     docker compose build
     ```
