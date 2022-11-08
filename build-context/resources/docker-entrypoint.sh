@@ -49,6 +49,7 @@ print_header() {
 
 print_header "Installing certificates ..."
 install-certificates 2>/dev/null
+init-buildx
 
 # Let the agent ignore the token env variables
 export VSO_AGENT_IGNORE=AZP_TOKEN,AZP_TOKEN_FILE

