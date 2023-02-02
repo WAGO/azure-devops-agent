@@ -1,2 +1,0 @@
-#!/bin/bash
-docker run --rm -t --privileged -v $(pwd):/$(pwd) -w $(pwd) -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /root/.docker/config.json:/root/.docker/config.json wagoautomation/docker-compose "$@"

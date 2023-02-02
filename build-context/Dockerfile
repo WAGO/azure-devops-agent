@@ -33,6 +33,8 @@ RUN rm docker-ce-cli.deb
 RUN add-apt-repository ppa:git-core/ppa -y \
     && apt-get update && apt-get install -y --no-install-recommends git
 
+RUN apt-get update && apt-get install -y --no-install-recommends docker-compose
+
 RUN update-ca-certificates --fresh
 RUN rm -rf /var/lib/apt/lists/*
 
