@@ -8,7 +8,7 @@ getBuilderId
 
 [ ! -z $BUILDER ] && exit 0
 
-docker buildx create --name=mybuilder --use
+docker buildx create --name=mybuilder --use --node=mybuilder0
 docker buildx inspect --bootstrap
 getBuilderId
 docker cp /etc/ssl/certs/ca-certificates.crt $BUILDER:/usr/local/share/ca-certificates/
