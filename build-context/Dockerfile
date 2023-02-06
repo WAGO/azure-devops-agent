@@ -1,5 +1,6 @@
-FROM ubuntu:18.04 as base
-
+FROM ubuntu:22.04 as base
+RUN DEBIAN_FRONTEND=noninteractive apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
 # To make it easier for build and release pipelines to run apt-get,
 # configure apt to not require confirmation (assume the -y argument by default)
 ENV DEBIAN_FRONTEND=noninteractive
@@ -14,26 +15,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     iputils-ping \
     libcurl4 \
-    libicu60 \
-    libunwind8 \
+    libicu70 \
+    libunwind-14 \
     netcat \
-    libssl1.0 \
-    software-properties-common
+    libssl3 \
+    docker-compose
 
 RUN install-certificates
 
 # RUN curl -LsS https://aka.ms/InstallAzureCLIDeb | bash 
 
-RUN curl -ksSL https://download.docker.com/linux/ubuntu/dists/bionic/pool/stable/amd64/docker-ce-cli_20.10.9~3-0~ubuntu-bionic_amd64.deb  -o docker-ce-cli.deb
+RUN curl -ksSL https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_23.0.0-1~ubuntu.22.04~jammy_amd64.deb  -o docker-ce-cli.deb
 RUN dpkg -i docker-ce-cli.deb
 RUN rm docker-ce-cli.deb
-
-
-#Update git
-RUN add-apt-repository ppa:git-core/ppa -y \
-    && apt-get update && apt-get install -y --no-install-recommends git
-
-RUN apt-get update && apt-get install -y --no-install-recommends docker-compose
 
 RUN update-ca-certificates --fresh
 RUN rm -rf /var/lib/apt/lists/*
