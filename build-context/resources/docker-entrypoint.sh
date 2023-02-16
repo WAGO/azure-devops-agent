@@ -79,6 +79,8 @@ source ./env.sh
 
 print_header "3. Configuring Azure Pipelines agent..."
 
+./config.sh remove
+
 ./config.sh --unattended \
   --agent "${AZP_AGENT_NAME:-$(hostname)}" \
   --url "$AZP_URL" \
