@@ -12,6 +12,7 @@ services:
       AZP_TOKEN: ${AZP_TOKEN}
       AZP_WORK: agent1
       AZP_AGENT_NAME: ${HOSTNAME}.dockerAgent1
+      AGENT_ALLOW_RUNASROOT: 0
     volumes:
       - type: bind
         source: /azp/agent1
