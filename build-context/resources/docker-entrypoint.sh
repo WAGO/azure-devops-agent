@@ -47,6 +47,7 @@ print_header() {
 
 print_header "Installing certificates ..."
 install-certificates 2>/dev/null
+/usr/local/share/docker-init.sh
 init-buildx
 
 # Let the agent ignore the token env variables

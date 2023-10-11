@@ -2,22 +2,16 @@ version: "3.8"
 
 services:
   agent1:
-    image: wagoautomation/azure-devops-agent:latest
+    image: docker.dl.wago.com/busol/azure-devops-agent:dind
     build:
       context: ./build-context
     restart: unless-stopped
+    privileged: true
     environment:
       AZP_URL: ${AZP_URL}
       AZP_POOL: ${AZP_POOL}
       AZP_TOKEN: ${AZP_TOKEN}
       AZP_WORK: agent1
-      AZP_AGENT_NAME: ${HOSTNAME}.dockerAgent1
+      AZP_AGENT_NAME: ${HOSTNAME}.dind
       AGENT_ALLOW_RUNASROOT: 0
-    volumes:
-      - type: bind
-        source: /azp/agent1
-        target: /azp/agent1
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
     command: --once
